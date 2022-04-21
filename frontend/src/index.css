@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-dark-color);
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+:root {
+  --right-place-color: #3aa394;
+  --wrong-place-color: #d3ad69;
+  --wrong-letter-color: #312a2c;
+  --background-input-color: #3c4150;
+  --background-dark-color: #1b1b1b;
+  --background-light-color: #e1e1e1;
+  --text-color: #f3f3f3;
+}

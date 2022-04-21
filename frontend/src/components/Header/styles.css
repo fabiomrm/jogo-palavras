@@ -1,0 +1,21 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--background-dark-color);
+  height: 5rem;
+}
+
+.title-container h1 {
+  font-size: 1.8rem;
+}
+
+.nav-container ul {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+}
+
+.nav-container ul li:first-of-type {
+  margin-bottom: 0.8rem;
+}

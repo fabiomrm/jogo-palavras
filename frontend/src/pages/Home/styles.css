@@ -1,0 +1,12 @@
+.main-container {
+  height: calc(100vh - 5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 2rem;
+}
+
+.board-area {
+  margin-top: 2rem;
+  width: 100%;
+}
