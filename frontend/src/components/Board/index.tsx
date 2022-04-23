@@ -1,6 +1,7 @@
 import './styles.css';
 import { Letter } from 'components/Letter';
 import { Keyboard } from 'components/Keyboard';
+import { Modal } from 'components/Modal';
 
 export const Board = () => {
   return (

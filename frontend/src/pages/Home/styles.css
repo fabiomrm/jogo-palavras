@@ -9,5 +9,48 @@
 .board-area {
   margin-top: 2rem;
   width: 100%;
-  border: 1px solid #f00;
+  max-width: 500px;
+}
+
+.suggestion-area {
+  display: flex;
+  justify-content: center;
+  height: 3rem;
+}
+
+.suggestion-area button {
+  background-color: #3aa394;
+  border-radius: 0.5rem;
+  border: 0;
+  outline: none;
+  color: #fff;
+  padding: 0 2rem;
+}
+
+.form {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.form-input-area {
+  height: 2rem;
+}
+
+.form-input-area input {
+  height: inherit;
+  padding: 0 0 0 1rem;
+}
+
+.form-button-area {
+  height: 2rem;
+}
+
+.form-button-area button {
+  height: inherit;
+  border-radius: 0.5rem;
+  border: 0;
+  outline: none;
+  background-color: #3aa394;
+  color: #fff;
+  padding: 0 2rem;
 }

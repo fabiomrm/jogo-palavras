@@ -106,7 +106,6 @@ export const GameContextProvider = ({ children }: Props) => {
   useEffect(() => {
     if (words.length > 0) {
       setWord(words[Math.floor(Math.random() * 1000)].name);
-      console.log(word);
     }
   }, [words]);
 
@@ -151,8 +150,6 @@ export const GameContextProvider = ({ children }: Props) => {
   };
 
   const handlePressEnter = () => {
-    console.log(word);
-    console.log(board);
     const wordsArray = words.map((w) => w.name);
     if (currentAttempt.letter < 5) return;
 
@@ -180,9 +177,7 @@ export const GameContextProvider = ({ children }: Props) => {
       return;
     }
     if (Number(currentAttempt.attempt) === 4 && userWord.toLowerCase() !== word.toLowerCase()) {
-      console.log(currentAttempt.attempt);
       setGameOver({ ...gameOver, isGameOver: true, guessedWord: false });
-      alert('falhou');
     }
   };
 
