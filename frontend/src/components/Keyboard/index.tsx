@@ -13,7 +13,6 @@ export const Keyboard = () => {
       } else {
         keys.forEach((key) => {
           if (String(event.key).toUpperCase() === key.toUpperCase()) {
-            console.log('aqui');
             handleSelectLetter(key);
           }
         });

@@ -1,4 +1,6 @@
+import { Word } from 'components/types';
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { requestBackend } from 'utils/requests';
 
 type GameContextData = {
   keys: string[];
@@ -90,14 +92,22 @@ type Props = {
 };
 export const GameContextProvider = ({ children }: Props) => {
   const [word, setWord] = useState<string>(initialData.word);
-  const [words, setWords] = useState<string[]>([]);
+  const [words, setWords] = useState<Word[]>([]);
   const [board, setBoard] = useState<string[][]>(initialData.board);
   const [currentAttempt, setCurrentAttempt] = useState(initialData.currentAttempt);
   const [gameOver, setGameOver] = useState(initialData.gameOver);
 
   useEffect(() => {
-    setWords(data);
-    setWord(words[Math.floor(Math.random() * data.length)]);
+    requestBackend({ url: '/words' }).then((res) => {
+      setWords(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (words.length > 0) {
+      setWord(words[Math.floor(Math.random() * 1000)].name);
+      console.log(word);
+    }
   }, [words]);
 
   const handleSelectLetter = (key: string) => {
@@ -119,6 +129,8 @@ export const GameContextProvider = ({ children }: Props) => {
   };
 
   const handlePressEnter = () => {
+    console.log(word);
+    const wordsArray = words.map((w) => w.name);
     if (currentAttempt.letter < 5) return;
 
     let userWord = '';
@@ -126,7 +138,7 @@ export const GameContextProvider = ({ children }: Props) => {
       userWord += board[Number(currentAttempt.attempt)][i];
     }
 
-    if (words.includes(userWord.toLowerCase())) {
+    if (wordsArray.includes(userWord.toLowerCase())) {
       setCurrentAttempt({ attempt: Number(currentAttempt.attempt) + 1, letter: 0 });
     } else {
       alert('Palavra não existe no vocabulário do jogo!');

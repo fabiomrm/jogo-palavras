@@ -10,15 +10,20 @@ export const Letter = ({ attempt, position }: Props) => {
   const { board, word, currentAttempt } = useGame();
 
   const letter = board[attempt][position];
+  let correctLetterAndPlace: boolean;
+  let isLetterCorrect: string | boolean = false;
 
-  const correctLetterAndPlace =
-    letter.length > 0 ? letter.toUpperCase() === word[position].toUpperCase() : '';
-  const correctLetter =
-    !correctLetterAndPlace && letter !== '' && word.toUpperCase().includes(letter.toUpperCase());
+  if (letter) {
+    console.log(word[position]);
+    correctLetterAndPlace =
+      letter.length > 0 ? letter.toUpperCase() === word[position].toUpperCase() : false;
+    const correctLetter =
+      !correctLetterAndPlace && letter !== '' && word.toUpperCase().includes(letter.toUpperCase());
 
-  const isLetterCorrect =
-    currentAttempt.attempt > attempt &&
-    (correctLetterAndPlace ? 'correct' : correctLetter ? 'wrongPlace' : 'wrong');
+    isLetterCorrect =
+      currentAttempt.attempt > attempt &&
+      (correctLetterAndPlace ? 'correct' : correctLetter ? 'wrongPlace' : 'wrong');
+  }
 
   return (
     <div className="letter" id={isLetterCorrect ? isLetterCorrect : ''}>
