@@ -32,7 +32,18 @@ public class WordService {
 	public WordDTO findById(Long id) {
 		Optional<Word> obj = repository.findById(id);
 		
-		Word entity = obj.orElseThrow(() -> new ResourceNotFoundException("Palavra não enconrada."));
+		Word entity = obj.orElseThrow(() -> new ResourceNotFoundException("Palavra não encontrada."));
+		
+		return new WordDTO(entity);
+	}
+	
+	@Transactional
+	public WordDTO insert(WordDTO dto) {
+		Word entity = new Word();
+		entity.setName(dto.getName());
+		entity.setStatus(false);
+		
+		entity = repository.save(entity);
 		
 		return new WordDTO(entity);
 	}

@@ -8,14 +8,16 @@ public class WordDTO {
 
 	private Long id;
 	private String name;
+	private boolean status;
 
 	public WordDTO() {
 
 	}
 
-	public WordDTO(Long id, String name) {
+	public WordDTO(Long id, String name, boolean status) {
 		this.id = id;
 		this.name = name;
+		this.status = status;
 	}
 
 	public WordDTO(Word entity) {
@@ -37,6 +39,14 @@ public class WordDTO {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 	@Override

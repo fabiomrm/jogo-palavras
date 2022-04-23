@@ -15,16 +15,17 @@ public class Word {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	private String name;
+	private boolean status;
 
 	public Word() {
 
 	}
 
-	public Word(Long id, String name) {
+	public Word(Long id, String name, boolean status) {
 		this.id = id;
 		this.name = name;
+		this.status = status;
 	}
 
 	public Long getId() {
@@ -41,6 +42,14 @@ public class Word {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 	@Override
