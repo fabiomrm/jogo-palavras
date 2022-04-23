@@ -25,6 +25,8 @@ type GameContextData = {
   setGameOver: React.Dispatch<
     React.SetStateAction<{ isGameOver: boolean; guessedWord: boolean; score: number }>
   >;
+  isModalOpen: boolean;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const keys = [
   'Q',
@@ -82,7 +84,9 @@ const initialData: GameContextData = {
   setCurrentAttempt: () => null,
   handleSelectLetter: () => null,
   handleDeleteLetter: () => null,
-  handlePressEnter: () => null
+  handlePressEnter: () => null,
+  isModalOpen: false,
+  setIsModalOpen: () => null
 };
 
 export const GameContext = createContext<GameContextData>(initialData);
@@ -96,6 +100,7 @@ export const GameContextProvider = ({ children }: Props) => {
   const [board, setBoard] = useState<string[][]>(initialData.board);
   const [currentAttempt, setCurrentAttempt] = useState(initialData.currentAttempt);
   const [gameOver, setGameOver] = useState(initialData.gameOver);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(initialData.isModalOpen);
 
   useEffect(() => {
     requestBackend({ url: '/words' }).then((res) => {
@@ -193,7 +198,9 @@ export const GameContextProvider = ({ children }: Props) => {
     handleDeleteLetter,
     handlePressEnter,
     gameOver,
-    setGameOver
+    setGameOver,
+    isModalOpen,
+    setIsModalOpen
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

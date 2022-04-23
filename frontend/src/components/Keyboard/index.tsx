@@ -2,10 +2,13 @@ import { useGame } from 'contexts/GameContext';
 import { useCallback, useEffect } from 'react';
 
 export const Keyboard = () => {
-  const { handleDeleteLetter, handleSelectLetter, handlePressEnter, keys } = useGame();
+  const { handleDeleteLetter, handleSelectLetter, handlePressEnter, keys, isModalOpen } = useGame();
 
   const handleKeyBoardEvent = useCallback(
     (event: any) => {
+      if (isModalOpen) {
+        return;
+      }
       if (event.key === 'Enter') {
         handlePressEnter();
       } else if (event.key === 'Backspace') {

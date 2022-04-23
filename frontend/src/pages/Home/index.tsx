@@ -11,12 +11,12 @@ import { AxiosRequestConfig } from 'axios';
 
 export const Home = () => {
   const {
-    gameOver: { isGameOver }
+    gameOver: { isGameOver },
+    isModalOpen,
+    setIsModalOpen
   } = useGame();
 
   const { register, handleSubmit, setValue } = useForm<Word>();
-
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const submit = (data: Word) => {
     data.status = false;
@@ -49,7 +49,15 @@ export const Home = () => {
         <Modal onClose={handleCloseModal} visible={isModalOpen}>
           <form className="form" onSubmit={handleSubmit(submit)}>
             <div className="form-input-area">
-              <input type="text" placeholder="Sugira a palavra" {...register('name')} />
+              <input
+                type="text"
+                placeholder="Sugira a palavra"
+                {...register('name', {
+                  required: 'Campo obrigatório',
+                  maxLength: 5,
+                  minLength: 5
+                })}
+              />
             </div>
             <div className="form-button-area">
               <button>ENVIAR</button>
