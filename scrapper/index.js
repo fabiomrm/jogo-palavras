@@ -6,7 +6,7 @@ const fs = require("fs");
   const page = await browser.newPage();
   let wordsArray = [];
 
-  for (let i = 4; i < 9; i++) {
+  for (let i = 5; i < 25; i++) {
     await page.goto(
       `https://www.dicionarioinformal.com.br/caca-palavras/5-letras/-----/${i}`
     );
