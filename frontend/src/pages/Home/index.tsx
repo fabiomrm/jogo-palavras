@@ -14,7 +14,7 @@ export const Home = () => {
     gameOver: { isGameOver }
   } = useGame();
 
-  const { register, handleSubmit } = useForm<Word>();
+  const { register, handleSubmit, setValue } = useForm<Word>();
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -26,11 +26,12 @@ export const Home = () => {
       data
     };
     requestBackend(config).then((res) => console.log(res.data));
+    setValue('name', '');
+    setIsModalOpen(false);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    console.log('oi');
   };
 
   const handleOpenModal = () => {

@@ -42,7 +42,9 @@ const fs = require("fs");
     .filter((x) => !(x.includes(".") || x.includes(" ")));
 
   wordsArray.forEach((word) =>
-    file.write(`INSERT INTO tb_words (name) VALUES ('${word}');\n`)
+    file.write(
+      `INSERT INTO tb_words (name, status) VALUES ('${word}', true);\n`
+    )
   );
   file.end();
 })();
