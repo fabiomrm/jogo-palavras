@@ -2,7 +2,7 @@ import { useGame } from 'contexts/GameContext';
 
 export const GameOver = () => {
   const {
-    gameOver: { guessedWord, isGameOver, score },
+    gameOver: { guessedWord, score },
     word
   } = useGame();
   return (
