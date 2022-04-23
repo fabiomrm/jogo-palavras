@@ -6,7 +6,7 @@ const fs = require("fs");
   const page = await browser.newPage();
   let wordsArray = [];
 
-  for (let i = 5; i < 25; i++) {
+  for (let i = 2; i < 25; i++) {
     await page.goto(
       `https://www.dicionarioinformal.com.br/caca-palavras/5-letras/-----/${i}`
     );
@@ -33,7 +33,12 @@ const fs = require("fs");
   });
   wordsArray = wordsArray
     .flat()
-    .map((word) => word.toLowerCase())
+    .map((word) =>
+      word
+        .normalize("NFD")
+        .replace(/[^a-zA-Zs]/gi, "")
+        .toLowerCase()
+    )
     .filter((x) => !(x.includes(".") || x.includes(" ")));
 
   wordsArray.forEach((word) =>
