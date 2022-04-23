@@ -54,3 +54,12 @@
   color: #fff;
   padding: 0 2rem;
 }
+
+.invalid-text {
+  color: #f00;
+  font-size: 0.8rem;
+  padding-left: 0.8rem;
+}
+.invalid-text::before {
+  content: '*';
+}

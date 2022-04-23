@@ -16,7 +16,12 @@ export const Home = () => {
     setIsModalOpen
   } = useGame();
 
-  const { register, handleSubmit, setValue } = useForm<Word>();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors }
+  } = useForm<Word>();
 
   const submit = (data: Word) => {
     data.status = false;
@@ -54,10 +59,11 @@ export const Home = () => {
                 placeholder="Sugira a palavra"
                 {...register('name', {
                   required: 'Campo obrigatório',
-                  maxLength: 5,
-                  minLength: 5
+                  maxLength: { value: 5, message: 'Palavra com 05 letras' },
+                  minLength: { value: 5, message: 'Palavra com 05 letras' }
                 })}
               />
+              {errors.name && <div className="invalid-text">{errors.name?.message}</div>}
             </div>
             <div className="form-button-area">
               <button>ENVIAR</button>
