@@ -14,7 +14,6 @@ export const Letter = ({ attempt, position }: Props) => {
   let isLetterCorrect: string | boolean = false;
 
   if (letter) {
-    console.log(word[position]);
     correctLetterAndPlace =
       letter.length > 0 ? letter.toUpperCase() === word[position].toUpperCase() : false;
     const correctLetter =

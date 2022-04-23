@@ -55,7 +55,7 @@ const keys = [
   'N',
   'M'
 ];
-const data = ['amigo', 'parte', 'perna', 'lança', 'vagem'];
+
 const initialData: GameContextData = {
   keys: keys,
   board: [
@@ -110,6 +110,28 @@ export const GameContextProvider = ({ children }: Props) => {
     }
   }, [words]);
 
+  useEffect(() => {
+    if (gameOver.isGameOver) {
+      setCurrentAttempt(initialData.currentAttempt);
+      const board = [
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', ''],
+        ['', '', '', '', '']
+      ];
+      setBoard(board);
+
+      setGameOver({ ...gameOver, isGameOver: false });
+
+      requestBackend({ url: '/words' }).then((res) => {
+        setWords(res.data);
+      });
+    }
+  }, [gameOver]);
+
   const handleSelectLetter = (key: string) => {
     if (currentAttempt.attempt > 4) {
       return;
@@ -130,6 +152,7 @@ export const GameContextProvider = ({ children }: Props) => {
 
   const handlePressEnter = () => {
     console.log(word);
+    console.log(board);
     const wordsArray = words.map((w) => w.name);
     if (currentAttempt.letter < 5) return;
 
