@@ -27,7 +27,7 @@ const fs = require("fs");
     wordsArray.push([...arr].flat());
   }
   await browser.close();
-  const file = fs.createWriteStream("words.txt");
+  const file = fs.createWriteStream("import.sql");
   file.on("error", function (err) {
     console.log(err);
   });
@@ -36,6 +36,8 @@ const fs = require("fs");
     .map((word) => word.toLowerCase())
     .filter((x) => !(x.includes(".") || x.includes(" ")));
 
-  wordsArray.forEach((word) => file.write(word + "\n"));
+  wordsArray.forEach((word) =>
+    file.write(`INSERT INTO tb_words (name) VALUES ('${word}');\n`)
+  );
   file.end();
 })();

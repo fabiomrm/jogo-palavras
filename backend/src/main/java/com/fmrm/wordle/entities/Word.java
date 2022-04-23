@@ -15,7 +15,7 @@ public class Word {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	// VALIDAÇÃO DE TAMANHO
+	
 	private String name;
 
 	public Word() {
