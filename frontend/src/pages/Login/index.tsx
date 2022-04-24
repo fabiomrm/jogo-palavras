@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { requestBackendLogin } from 'utils/requests';
 
 import './styles.css';
+
+type CredentialsDTO = {
+  username: string;
+  password: string;
+};
 
 export const Login = () => {
   const [hasError, setHasError] = useState();
@@ -11,10 +16,10 @@ export const Login = () => {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm();
+  } = useForm<CredentialsDTO>();
 
-  const onSubmit = () => {
-    console.log('oi');
+  const onSubmit = (formData: CredentialsDTO) => {
+    requestBackendLogin(formData).then((res) => console.log(res.data));
   };
 
   return (
