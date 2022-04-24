@@ -1,4 +1,4 @@
-import { Word } from 'components/types';
+import { Word } from 'types';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { requestBackend } from 'utils/requests';
 

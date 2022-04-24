@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { requestBackendLogin } from 'utils/requests';
+import { saveAuthData } from 'utils/storage';
 
 import './styles.css';
 
@@ -10,7 +11,7 @@ type CredentialsDTO = {
 };
 
 export const Login = () => {
-  const [hasError, setHasError] = useState();
+  const [hasError, setHasError] = useState<boolean>(false);
 
   const {
     register,
@@ -19,7 +20,10 @@ export const Login = () => {
   } = useForm<CredentialsDTO>();
 
   const onSubmit = (formData: CredentialsDTO) => {
-    requestBackendLogin(formData).then((res) => console.log(res.data));
+    requestBackendLogin(formData).then((res) => {
+      saveAuthData(res.data);
+      setHasError(false);
+    });
   };
 
   return (

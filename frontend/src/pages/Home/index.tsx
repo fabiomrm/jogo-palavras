@@ -3,9 +3,8 @@ import { Board } from 'components/Board';
 import { useGame } from 'contexts/GameContext';
 import { GameOver } from 'components/GameOver';
 import { Modal } from 'components/Modal';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Word } from 'components/types';
+import { Word } from 'types';
 import { requestBackend } from 'utils/requests';
 import { AxiosRequestConfig } from 'axios';
 

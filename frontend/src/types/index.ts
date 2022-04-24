@@ -3,3 +3,5 @@ export type Word = {
   name: string;
   status: boolean;
 };
+
+export type Role = 'ROLE_ADMIN';
