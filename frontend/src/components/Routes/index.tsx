@@ -1,4 +1,5 @@
 import { Header } from 'components/Header';
+import { Private } from 'components/Private';
 import { Admin } from 'pages/Admin';
 import { Home } from 'pages/Home';
 import { Login } from 'pages/Login';
@@ -11,7 +12,14 @@ export const Routes = () => {
       <RoutesDOM>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route
+          path="/admin"
+          element={
+            <Private>
+              <Admin />
+            </Private>
+          }
+        />
       </RoutesDOM>
     </BrowserRouter>
   );
