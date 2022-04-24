@@ -1,0 +1,99 @@
+.base-card {
+  background: #fff;
+  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.25);
+  border-radius: 1rem;
+}
+
+.login-card {
+  padding: 1.25rem;
+  font-size: 1rem;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.login-card h1 {
+  text-align: center;
+  margin-top: 4.375rem;
+  margin-bottom: 3.125rem;
+  font-weight: 400;
+  font-size: 2.5em;
+  letter-spacing: -0.015em;
+  color: #263238;
+  text-transform: uppercase;
+}
+
+.login-link-recover {
+  font-size: 1em;
+  letter-spacing: -0.015em;
+  color: #407bff;
+  display: block;
+  margin-bottom: 90px;
+}
+
+.login-link-register {
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  letter-spacing: -0.015em;
+  text-decoration-line: underline;
+  color: #407bff;
+  margin-left: 10px;
+}
+
+.login-submit {
+  margin-bottom: 10px;
+}
+
+.not-registered {
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  letter-spacing: -0.015em;
+  color: #9e9e9e;
+}
+
+.signup-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-form-input-area {
+  height: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.login-form-input-area input {
+  width: 100%;
+  height: inherit;
+  border: 0;
+  border-radius: 0.4rem;
+  box-shadow: 1px 1px 8px #000;
+  padding-left: 1rem;
+}
+
+.login-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-submit button {
+  padding: 0.8rem 1rem;
+  text-transform: uppercase;
+  background-color: #1b1b1b;
+  color: #f3f3f3;
+  cursor: pointer;
+  border: 0;
+}
+
+.login-submit button:hover {
+  background-color: #f3f3f3;
+  color: #1b1b1b;
+  border: 0;
+}
+
+@media (min-width: 576px) {
+  .login-card {
+    padding: 3.125rem;
+  }
+}
