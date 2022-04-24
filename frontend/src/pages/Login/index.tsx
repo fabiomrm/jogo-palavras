@@ -1,7 +1,9 @@
+import { useAuth } from 'contexts/AuthContext';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { requestBackendLogin } from 'utils/requests';
 import { saveAuthData } from 'utils/storage';
+import { getTokenData } from 'utils/token';
 
 import './styles.css';
 
@@ -13,6 +15,7 @@ type CredentialsDTO = {
 export const Login = () => {
   const [hasError, setHasError] = useState<boolean>(false);
 
+  const { authContextData, setAuthContextData } = useAuth();
   const {
     register,
     handleSubmit,
@@ -23,6 +26,11 @@ export const Login = () => {
     requestBackendLogin(formData).then((res) => {
       saveAuthData(res.data);
       setHasError(false);
+      setAuthContextData({
+        authenticated: true,
+        tokenData: getTokenData(),
+        roles: getTokenData()?.authorities
+      });
     });
   };
 
