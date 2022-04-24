@@ -32,6 +32,13 @@ public class WordResource {
 		return ResponseEntity.ok().body(list);
 	}
 
+	@GetMapping(value = "/suggestions")
+	public ResponseEntity<List<WordDTO>> findWordsSuggestions() {
+		List<WordDTO> list = service.findWordsSuggestions();
+		
+		return ResponseEntity.ok().body(list);
+	}
+
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<WordDTO> findById(@PathVariable Long id) {
 		WordDTO obj = service.findById(id);
@@ -44,7 +51,7 @@ public class WordResource {
 		dto = service.insert(dto);
 
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
-		
+
 		return ResponseEntity.created(uri).body(dto);
 	}
 

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { requestBackendLogin } from 'utils/requests';
 import { saveAuthData } from 'utils/storage';
 import { getTokenData } from 'utils/token';
-
+import { useNavigate } from 'react-router-dom';
 import './styles.css';
 
 type CredentialsDTO = {
@@ -13,6 +13,7 @@ type CredentialsDTO = {
 };
 
 export const Login = () => {
+  const navigate = useNavigate();
   const [hasError, setHasError] = useState<boolean>(false);
 
   const { authContextData, setAuthContextData } = useAuth();
@@ -23,15 +24,19 @@ export const Login = () => {
   } = useForm<CredentialsDTO>();
 
   const onSubmit = (formData: CredentialsDTO) => {
-    requestBackendLogin(formData).then((res) => {
-      saveAuthData(res.data);
-      setHasError(false);
-      setAuthContextData({
-        authenticated: true,
-        tokenData: getTokenData(),
-        roles: getTokenData()?.authorities
-      });
-    });
+    requestBackendLogin(formData)
+      .then((res) => {
+        saveAuthData(res.data);
+        setHasError(false);
+        setAuthContextData({
+          authenticated: true,
+          tokenData: getTokenData(),
+          roles: getTokenData()?.authorities
+        });
+
+        navigate('/admin');
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

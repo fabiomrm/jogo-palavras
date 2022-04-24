@@ -27,6 +27,13 @@ public class WordService {
 		return list.stream().map(x -> new WordDTO(x)).collect(Collectors.toList());
 		
 	}
+	
+	@Transactional(readOnly = true)
+	public List<WordDTO> findWordsSuggestions() {
+		List<Word> list = repository.findWordsSuggestions();
+		
+		return list.stream().map(x -> new WordDTO(x)).collect(Collectors.toList());
+	}
 
 	@Transactional(readOnly = true)
 	public WordDTO findById(Long id) {
