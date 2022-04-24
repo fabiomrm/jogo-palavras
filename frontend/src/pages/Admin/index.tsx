@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Word } from 'types';
 import { requestBackend } from 'utils/requests';
+import CheckIcon from '../../assets/images/check-icon.png';
+import WrongIcon from '../../assets/images/wrong-icon.png';
 import './styles.css';
 
 export const Admin = () => {
@@ -14,7 +16,7 @@ export const Admin = () => {
 
   return (
     <div className="suggestions-container">
-      <table>
+      <table className="suggestions-table">
         <thead>
           <tr>
             <th>ID</th>
@@ -28,8 +30,12 @@ export const Admin = () => {
             <tr key={word.id}>
               <td>{word.id}</td>
               <td>{word.name}</td>
-              <td>ACEITAR</td>
-              <td>RECUSAR</td>
+              <td>
+                <img src={CheckIcon} alt="aceitar" className="icon-correct" />
+              </td>
+              <td>
+                <img src={WrongIcon} alt="recusar" className="icon-wrong" />
+              </td>
             </tr>
           ))}
         </tbody>

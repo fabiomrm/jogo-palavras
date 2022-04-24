@@ -1,5 +1,46 @@
 .suggestions-container {
+  height: calc(100vh - 5rem);
   display: flex;
-  padding: 1rem;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 2rem;
+  border: 1px solid #0f0;
+}
+
+.suggestions-table {
+  width: 100%;
   border: 1px solid #f00;
+  margin-top: 2rem;
+  border-spacing: 0;
+}
+
+.suggestions-table > thead > tr {
+  text-align: left;
+  margin: 0;
+  height: 2rem;
+  background-color: #ccc;
+  color: #1b1b1b;
+}
+
+.suggestions-table > thead > tr > th:first-of-type {
+  padding-left: 2rem;
+}
+
+.suggestions-table > tbody > tr {
+  height: 3rem;
+}
+
+.suggestions-table > tbody > tr > td {
+  margin: 0;
+}
+
+.suggestions-table > tbody > tr > td:first-of-type {
+  padding-left: 2rem;
+}
+.suggestions-table > tbody > tr > td > img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
 }
