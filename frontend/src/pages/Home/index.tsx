@@ -7,7 +7,6 @@ import { useForm } from 'react-hook-form';
 import { Word } from 'types';
 import { requestBackend } from 'utils/requests';
 import { AxiosRequestConfig } from 'axios';
-import { useState } from 'react';
 
 export const Home = () => {
   const {
