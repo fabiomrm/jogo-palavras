@@ -143,7 +143,6 @@ export const GameContextProvider = ({ children }: Props) => {
   }, [gameOver, playAgain]);
 
   const handleSelectLetter = (key: string) => {
-    console.log(word);
     if (currentAttempt.attempt > 4) {
       return;
     }
@@ -154,6 +153,7 @@ export const GameContextProvider = ({ children }: Props) => {
   };
 
   const handleDeleteLetter = () => {
+    console.log(word);
     if (currentAttempt.letter === 0) return;
     const newBoard = [...board];
     newBoard[Number(currentAttempt.attempt)][Number(currentAttempt.letter) - 1] = '';

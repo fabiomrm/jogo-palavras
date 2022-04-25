@@ -1,7 +1,7 @@
 import { useGame } from 'contexts/GameContext';
 
 export const GameOver = () => {
-  const { gameOver, setGameOver, word, playAgain, setPlayAgain } = useGame();
+  const { gameOver, word, setPlayAgain } = useGame();
   return (
     <div className="game-over-container">
       <h3>{gameOver.guessedWord ? 'Parabéns!' : 'Não foi dessa vez!'}</h3>
