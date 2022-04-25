@@ -27,6 +27,8 @@ type GameContextData = {
   >;
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  playAgain: boolean;
+  setPlayAgain: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const keys = [
   'Q',
@@ -86,7 +88,9 @@ const initialData: GameContextData = {
   handleDeleteLetter: () => null,
   handlePressEnter: () => null,
   isModalOpen: false,
-  setIsModalOpen: () => null
+  setIsModalOpen: () => null,
+  playAgain: false,
+  setPlayAgain: () => null
 };
 
 export const GameContext = createContext<GameContextData>(initialData);
@@ -100,6 +104,7 @@ export const GameContextProvider = ({ children }: Props) => {
   const [board, setBoard] = useState<string[][]>(initialData.board);
   const [currentAttempt, setCurrentAttempt] = useState(initialData.currentAttempt);
   const [gameOver, setGameOver] = useState(initialData.gameOver);
+  const [playAgain, setPlayAgain] = useState(initialData.playAgain);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(initialData.isModalOpen);
 
   useEffect(() => {
@@ -115,7 +120,8 @@ export const GameContextProvider = ({ children }: Props) => {
   }, [words]);
 
   useEffect(() => {
-    if (gameOver.isGameOver) {
+    if (playAgain) {
+      setPlayAgain(false);
       setCurrentAttempt(initialData.currentAttempt);
       const board = [
         ['', '', '', '', ''],
@@ -134,9 +140,10 @@ export const GameContextProvider = ({ children }: Props) => {
         setWords(res.data);
       });
     }
-  }, [gameOver]);
+  }, [gameOver, playAgain]);
 
   const handleSelectLetter = (key: string) => {
+    console.log(word);
     if (currentAttempt.attempt > 4) {
       return;
     }
@@ -200,7 +207,9 @@ export const GameContextProvider = ({ children }: Props) => {
     gameOver,
     setGameOver,
     isModalOpen,
-    setIsModalOpen
+    setIsModalOpen,
+    playAgain,
+    setPlayAgain
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
