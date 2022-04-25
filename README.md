@@ -22,8 +22,8 @@
 
 ### Imagens do Projeto
 
-- [Home Mobile](https://github.com/fabiomrm/movieflix-frontend/blob/main/home-mobile.png?raw=true)
-- [Home Medium](https://github.com/fabiomrm/movieflix-frontend/blob/main/home-medium.png?raw=true)
+- [Jogo](https://github.com/fabiomrm/jogo-palavras/blob/main/layout-mobile.png?raw=true)
+- [Modal de Sugestões](https://github.com/fabiomrm/movieflix-frontend/blob/main/home-medium.png?raw=true)
 - [Home Large](https://github.com/fabiomrm/movieflix-frontend/blob/main/home-fullscreen.png?raw=true)
 
 ### Detalhes
